@@ -1,4 +1,10 @@
-<h1 align="center">JavaScript </h1>
+<h1 align="center">Computer Science </h1>
+
+Computer science is the study of computers and how computer technology can be used to solve problems.
+
+#### How to Build a Strong Foundation:
+
+To build a strong foundation, focus on understanding concepts, not just memorizing, and practice regularly.
 
 <details>
 <summary>💡Tips: Repetition is necessary while learning Coding</summary>
