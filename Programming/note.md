@@ -1,0 +1,9 @@
+If you want to Learn Any Programming Language you need to know very well two things
+
+<details>
+<summary>💡Tips: Repetition is necessary while learning Coding</summary>
+  <ul>Instead of going in-depth in various topics, you should practice it more often!</ul>
+</details>
+
+1. Data Type
+2. Processing
