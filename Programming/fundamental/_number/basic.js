@@ -1,3 +1,5 @@
+// number, date, math
+
 const score = Number(12.3);
 const newscore = Number(12);
 
