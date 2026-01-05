@@ -18,7 +18,7 @@ If you want to Learn Any Programming Language you need to know very well two thi
 </ul>
 </details>
 
-## Introduction to JavaScript
+## **Introduction to JavaScript**
 
 - Developed by **Brendan Eich** in 1995.
 - JavaScript is a **loosely** typed, **synchronous**, **single-threaded** language.
@@ -56,11 +56,20 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
 
 > You should understand `const` declarations as "create a variable whose *identity* remains constant", not "whose *value* remains constant" — or, "create immutable [bindings](https://developer.mozilla.org/en-US/docs/Glossary/Binding)", not "immutable values".
 
-<details>
-<summary>Code Example</summary>
+## **Data Types in JavaScript**
 
-```jsx
-    const nums = [1, 2, 3];
-    nums.push(4); // This is allowed, arr is now [1, 2, 3, 4]
-```
-</details>
+### **Primitive Types**
+
+- `string`
+- `number` → Represents both integer and floating-point numbers, integers are limited by ±(253-1)
+- `boolean`
+- `null` → Represents absence/empty ness of value.
+- `undefined` → Represents a declared variable without an assigned value.
+- `symbol` → Unique, immutable value (often used for object keys).
+- `bigint` → Represents arbitrary large integers (e.g., `123n`).
+
+### **Reference Types**
+
+- `object` → Includes Objects, Arrays, Functions, Dates, RegExp, etc.
+
+[Code Examples](./how_js_work/variable-datatype.js)

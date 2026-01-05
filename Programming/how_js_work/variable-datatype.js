@@ -1,6 +1,7 @@
 "use strict"; // treat all JS code as newer version
 
-// Variable -> (let and const) Variable ka use hota hai information/data store krna ka liya, aur information/data agal agal type ke ho sakta
+// Variable -> (let and const) Variable ka use hota hai information/data store krna ka liya,
+//  aur information/data agal agal type ke ho sakta
 
 // let means ek baar jo value rakh de toh badal sakta hai
 
@@ -8,11 +9,11 @@ let userName = "Ravi"
 
 let userMessage = "Hi"
 
-let sonuMessage; // declear a variable
+let adminMessage; // declear a variable
 
-sonuMessage = userMessage // copy Hi from userMessage into sonuMessage 
+adminMessage = userMessage // copy Hi from userMessage into adminMessage 
 
-// console.log(sonuMessage, userMessage);
+// console.log(adminMessage, userMessage);
 
 // const means ek baar value rakh de to पत्थर की लकीर hai ji
 
@@ -22,9 +23,7 @@ const BIRTHDAY = 19
 // ✔ For primitive values → const makes them fully immutable (cannot change at all).
 
 const NAME = "Sonu"
-// NAME = "Ashi"
-
-// AGE = 20
+// NAME = "Ravi"
 
 
 // ✔ For objects/arrays → const prevents reassignment but allows modifying elements/properties.
@@ -45,17 +44,17 @@ console.log(numbers)
 
 // 1 String -> "", '', ``
 
-let color = "Red" 
+let color = "Red"
 
 // Backtick String `` -> we embmbed variable and expressions by wrap into ${…}
 
-console.log(`${2/2}. Color: ${color}`)
+console.log(`${2 / 2}. Color: ${color}`)
 
 // 2 Number -> Integer , Float, Infinity, -Infinity and NaN
 
 let one = 1 // Integer // Float -> 2.3
-console.log(1/0) 
-console.log(-1/0) 
+console.log(1 / 0)
+console.log(-1 / 0)
 
 // 3 BigInt -> 2 to power 53 && use -> n at last
 let sunDistanceFromEarth = 9007199254740992n
@@ -69,7 +68,8 @@ let isPasswordCorrect = true
 let isGreater = 10 > 2
 console.log(isGreater);
 
-// 5 Null -> refrence to non-existing object or null pointer && abhi kuch nhi hai - means empty - nothingness - खाली
+// 5 Null -> refrence to non-existing object or null pointer && abhi kuch nhi hai 
+// - means empty - nothingness - खाली
 
 let temperature = null // खाली
 console.log(temperature)
@@ -88,8 +88,6 @@ console.log(typeof String) // function
 console.log(typeof Number) // function
 console.log(typeof BigInt) // function
 console.log(typeof Boolean) // function
-
-
 console.log(typeof null) // object -> mistake by JS owner
 console.log(typeof undefined) // undefined
 
