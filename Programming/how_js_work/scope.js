@@ -1,14 +1,20 @@
-let obj = {
-  personName: "Ravi",
-  greet() {
-    console.log("Hello", this.personName);
-  },
-};
+{
+  // Block Scope
+  let x = 10;
+  console.log(x); // this x is only accessible within this block
+}
 
-console.log("Hi");
+console.log(x) // Error: x is not defined
 
-setTimeout(obj.greet.bind(obj), 2 * 1000);
+// Function Scope
+function functionScope() {
+  let y = 20;
+  console.log(y); // this y is only accessible within this function
+}
 
-console.log("Bye");
+functionScope();
+console.log(y); // Error: y is not defined
 
-// obj.greet();
+// Global Scope
+let z = 30;
+console.log(z); // this z is accessible anywhere in the code
