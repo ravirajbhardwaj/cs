@@ -208,7 +208,7 @@ Returns a string indicating the **type** of a value.
     
 >💡 `typeof null` returning "object" is a bug. It can’t be fixed, because that would break the existing legacy codebase. 
 
-[All code examples covered so far](./how_js_work/variable-datatype.js)
+[Code examples covered so far](./how_js_work/variable-datatype.js)
 
 ## **Conditional Statements**
 
@@ -219,3 +219,66 @@ Used to make decisions based on certain conditions.
 | **If-else**| Used for general conditional branching |
 | **Switch** | Used when checking **one fixed value** against multiple cases, uses **strict equality (`===`)** meaning types must match, **Cannot use relational operators** (`>`, `<`, etc.). |
 | **Ternary Operator (`? :`)**  | A shorthand for simple conditional expressions |
+
+[Code examples covered so far](./_loops_control_flow/ifelse_switch_ternary.js)
+
+## **Truthy** and **Falsy** Values
+
+Determine how expressions evaluate in boolean contexts (like in  `if-else` statements).
+
+### **Falsy Values**
+
+There are exactly 8 **falsy values** in JavaScript
+
+&nbsp; `false` &nbsp; `0` &nbsp; `-0` &nbsp; `0n` (BigInt zero) &nbsp; `""` (empty string) &nbsp; `null` &nbsp; `undefined` &nbsp; `NaN` &nbsp;
+
+### **Truthy Values**
+
+Everything else is **truthy**, including:
+
+- All objects (including empty objects `{}` and arrays `[]`)
+- Non-empty strings: `"hello"`, `"0"`, `"false"`
+- Non-zero numbers (including negative numbers and `Infinity`)
+- Functions, Symbols, and BigInt.
+- `new Boolean(false)` (it’s an object, not primitive `false` and objects are always truthy)
+
+> [Learn more about the quirks of truthy and falsy values.](https://akgbytes.hashnode.dev/mastering-truthy-and-falsy-in-js-no-more-confusion)
+
+
+## **Loops in JavaScript**
+
+Loops allow you to execute a block of code **multiple times** based on a condition.
+
+### **For Loop**
+
+- Used when the **number of iterations is known**.
+- Consists of 3 parts ⇒ I**nitialization, Condition, Updation**.
+
+<img src="./_loops_control_flow/working.png" alt="For Loop working" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">
+
+### **While Loop**
+
+- Used when **the number of iterations is unknown** and depends on a condition.
+- The condition is checked **before** executing the loop body.
+
+### **Do-While Loop**
+
+- Similar to `while`, but **executes at least once**, even if the condition is `false`.
+- The condition is checked **after** the loop body executes.
+
+### **for...of Loop**
+
+- Used to iterates over **values** of an iterable (like array, string).
+
+### **for...in Loop**
+
+- Used for iterating over object properties but should be used carefully, as it iterates over inherited properties as well.
+- It iterates over the **keys** of an object or indices of an array.
+
+## **Break and Continue Statements**
+
+| **Break Statement** | **Continue Statement** |
+|---------------------|-----------------------|
+| **Exits** the loop immediately when a condition is met. | **Skips** the current iteration and moves to the next one. |
+
+[Code examples covered so far](./_loops_control_flow/iterator.js)
