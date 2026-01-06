@@ -52,7 +52,7 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
 | `const` | No | No | Yes | Yes |
 
 
-> **`const`** only prevents the reassignment of the variable, it doesn’t make the variable immutable. Objects declared with **`const`** can still be mutated.
+>💡 **`const`** only prevents the reassignment of the variable, it doesn’t make the variable immutable. Objects declared with **`const`** can still be mutated.
 
 > You should understand `const` declarations as "create a variable whose *identity* remains constant", not "whose *value* remains constant" — or, "create immutable [bindings](https://developer.mozilla.org/en-US/docs/Glossary/Binding)", not "immutable values".
 
@@ -71,8 +71,6 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
 ### **Reference Types**
 
 - `object` → Includes Objects, Arrays, Functions, Dates, RegExp, etc.
-
-[Code Examples](./how_js_work/variable-datatype.js)
 
 **Operation** → [JS Comparison Table](https://dorey.github.io/JavaScript-Equality-Table/)
 
@@ -94,7 +92,6 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
   console.log(user); // Output : "Eve"
   ```
   </details>
-  <br/>
 
 - When passed to a function or assigned to another a new variable, a copy is created, and each variable holds its own independent value.
 
@@ -111,7 +108,6 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
   console.log(user); // Output : "Eve"
   ```
   </details>
-  <br/>
 
 - Primitives are compared by value, they are considered equal if they have the same content
 
@@ -124,7 +120,6 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
   console.log(a === b); // Output: true (same value)
   ```
   </details>
-  <br/>
 
 ### 2. **Reference Types** (Mutable & Passed by Reference)
 - Reference types (objects, arrays, functions) are mutable, meaning their contents can be modified.
@@ -138,7 +133,6 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
   console.log(user); // Output: ['Ravi', 'Sunil']
   ```
   </details>
-  <br/>
 
 - When passed to a function or assigned to another a new variable, both refers to the same memory location, meaning changes affect both.
 
@@ -156,7 +150,6 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
   console.log(newuser.text); // Output: "Raj"
   ```
   </details>
-  <br/>
 
 - Objects are compared by reference, they are considered equal only if they reference the same memory location.
 
@@ -167,7 +160,6 @@ console.log("5" - 2);  // Output: 3 (string converted to number)
   console.log({} === {}); // Output: always false (different references)
   ```
   </details>
-  <br/>
 
 
 ## **Type Conversion**
@@ -182,3 +174,37 @@ Also known as **typecasting**, it means the **conversion** of a value from one d
   - `+` operator → String concatenation if one operand is a string.
   - `-`, `*` ,`/` → tries to convert strings to numbers.
   - Booleans → `true` → `1`, `false` → `0`.
+
+### **Explicit Conversion**
+
+- When developer explicitly converts one type to another.
+
+Mostly use `Number()`,`String()` & `Boolean()` to convert a value into number, string and boolean type respectively.
+
+String to number 
+
+- `parseInt()`
+- `parseFloat()`
+
+>💡**NaN (Not-a-Number)**  is a special value of the **`Number`,** represents an **invalid number**.
+
+> When it occurs?
+>  - Converting an **invalid string** **to a number**.
+>  - Performing invalid mathematical operations.
+
+>🤔 NaN is not equal to anything, even itself!  So how do check if something is NaN? 
+👉 Using **`isNaN()`**
+
+>💡JavaScript’s **loose equality (`==`)** performs type coercion, while **strict equality (`===`)** does not perform type coercion.
+
+## **String Interpolation**
+
+- Allows to embed variables (or any valid expressions) directly inside a string using **template literals** (``).
+
+## `typeof` Operator
+
+Returns a string indicating the **type** of a value.
+    
+>💡 `typeof null` returning "object" is a bug. It can’t be fixed, because that would break the existing legacy codebase. 
+
+[All code examples covered so far](./how_js_work/variable-datatype.js)

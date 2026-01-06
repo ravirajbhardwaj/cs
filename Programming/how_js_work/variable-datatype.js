@@ -90,6 +90,13 @@ console.log(typeof BigInt) // function
 console.log(typeof Boolean) // function
 console.log(typeof null) // object -> mistake by JS owner
 console.log(typeof undefined) // undefined
+console.log(typeof Symbol()); // "symbol"
+console.log(typeof []); // "object"
+console.log(typeof function () { }); // "function"
+console.log(typeof null); // "object"
+console.log(typeof NaN); // "number"
+console.log(typeof 12n); // "bigint"
+console.log(typeof class User { }); // "function"
 
 let sumFunc = () => {
     return "sum"
