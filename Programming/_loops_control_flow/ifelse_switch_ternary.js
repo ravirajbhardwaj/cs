@@ -30,6 +30,7 @@ checktruthyValue("");
 // switch(){} -> is like a function ek chabhi milti hai
 
 let statusCode = "404";
+let statusCodeInNumber = 404; // Executes default case due to strict equality
 
 switch (statusCode) {
   case "200":
@@ -37,6 +38,17 @@ switch (statusCode) {
     break;
   case "404":
     console.log("Not found");
+    break;
+  case "500":
+    console.log("Server Error");
+    break;
   default:
+    console.log("Unknown Status Code");
     break; // jiska koi nhi sahara uska mai
 }
+
+// Ternary Operator -> ek line me if-else krna ho
+
+let isDarkMode = true;
+let theme = isDarkMode ? 'Dark Theme' : 'Light Theme';
+console.log(theme);

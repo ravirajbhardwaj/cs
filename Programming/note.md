@@ -19,6 +19,7 @@ If you want to Learn Any Programming Language you need to know very well two thi
 </details>
 
 ## **Introduction to JavaScript**
+Foundations of programming logic, problem-solving, language concepts, and best practices.
 
 - Developed by **Brendan Eich** in 1995.
 - JavaScript is a **loosely** typed, **synchronous**, **single-threaded** language.
@@ -201,10 +202,20 @@ String to number
 
 - Allows to embed variables (or any valid expressions) directly inside a string using **template literals** (``).
 
-## `typeof` Operator
+### `typeof` Operator
 
 Returns a string indicating the **type** of a value.
     
 >💡 `typeof null` returning "object" is a bug. It can’t be fixed, because that would break the existing legacy codebase. 
 
 [All code examples covered so far](./how_js_work/variable-datatype.js)
+
+## **Conditional Statements**
+
+Used to make decisions based on certain conditions.
+
+| Concept | Description |
+|---------|-------------|
+| **If-else**| Used for general conditional branching |
+| **Switch** | Used when checking **one fixed value** against multiple cases, uses **strict equality (`===`)** meaning types must match, **Cannot use relational operators** (`>`, `<`, etc.). |
+| **Ternary Operator (`? :`)**  | A shorthand for simple conditional expressions |
