@@ -244,6 +244,14 @@ Everything else is **truthy**, including:
 
 > [Learn more about the quirks of truthy and falsy values.](https://akgbytes.hashnode.dev/mastering-truthy-and-falsy-in-js-no-more-confusion)
 
+### **Logical Operators**
+
+- `&&` returns the first falsy value.
+- `||` returns the first truthy value.
+- `??` returns the first defined value
+- `!` negates the boolean value.
+- `!!` converts a value to its boolean equivalent.
+
 
 ## **Loops in JavaScript**
 
@@ -282,3 +290,21 @@ Loops allow you to execute a block of code **multiple times** based on a conditi
 | **Exits** the loop immediately when a condition is met. | **Skips** the current iteration and moves to the next one. |
 
 [Code examples covered so far](./_loops_control_flow/iterator.js)
+
+## **Functions in JavaScript**
+
+Functions `factory do something (only one work)` are reusable piece of code designed to perform a particular task.
+
+### Function Statement (Function Declaration)
+
+Simple fn → Hoisted, means can be accessed before declaration.
+
+### Function Expression
+
+Functions that are assigned to a variable.
+
+Not hoisted means they can’t be accessed before declaration.
+
+### Anonymous Function
+
+Functions without name, they are usually used as values in function expressions or used as callbacks.
