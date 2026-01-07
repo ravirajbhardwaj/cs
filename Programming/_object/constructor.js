@@ -9,6 +9,22 @@ const cutyia = new User("Ravi", "ravi@gmail.com").haha;
 
 console.log(typeof new User());
 
+function User(name) {
+  // this = {}  -> job bhi is function ko call krega usme ya assign krna hai  (automatic)
+  if (!new.target) {
+    return new User(name);
+  }
+  this.name = name;
+
+  // return this   -> automatic
+}
+
+const secondUser = User("Ravi");
+console.log(secondUser);
+
+let arr = Array(1, 2, "he");
+
+
 
 function Student(name, age) {
   if (!new.target) {
@@ -36,3 +52,28 @@ console.log(user2);
 
 let string = "ravi";
 console.log(typeof string);
+
+let calculator = {
+  // ... your code ...
+};
+
+calculator.a = 10;
+calculator.b = 20;
+
+calculator.read = function () {
+  console.log(this.a, this.b);
+};
+
+calculator.sum = function () {
+  let sum = this.a + this.b;
+  return sum;
+};
+
+calculator.mul = function () {
+  let mul = this.a * this.b;
+  return mul;
+};
+
+calculator.read();
+console.log(calculator.sum());
+console.log(calculator.mul());
