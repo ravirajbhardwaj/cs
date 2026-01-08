@@ -17,6 +17,7 @@ function bringBrush(itne) {
 bringBrush(4); // neta ji
 
 // fuction is also treat a value like string, number and etc
+// function expression
 const greet = function sayHello(name) {
   console.log(`Hello, ${name}!`);
 }
@@ -49,13 +50,6 @@ function handleArray(anyArray) {
 }
 
 console.log(handleArray(["Ravi", 21]));
-
-const roundTo = function (n, step) {
-  let remainder = n % step;
-  return n - remainder + (remainder < step / 2 ? 0 : step);
-};
-
-// console.log(roundTo(35, 10));
 
 let personOne = {
   name: "Ravi",
