@@ -208,7 +208,7 @@ Returns a string indicating the **type** of a value.
     
 >💡 `typeof null` returning "object" is a bug. It can’t be fixed, because that would break the existing legacy codebase. 
 
-[Code examples covered so far](./how_js_work/variable-datatype.js)
+[Code examples covered so far](./js_topic/variable-datatype.js)
 
 ## **Conditional Statements**
 
@@ -220,7 +220,7 @@ Used to make decisions based on certain conditions.
 | **Switch** | Used when checking **one fixed value** against multiple cases, uses **strict equality (`===`)** meaning types must match, **Cannot use relational operators** (`>`, `<`, etc.). |
 | **Ternary Operator (`? :`)**  | A shorthand for simple conditional expressions |
 
-[Code examples covered so far](./_loops_control_flow/ifelse_switch_ternary.js)
+[Code examples covered so far](./_control_flow/conditional.js)
 
 ## **Truthy** and **Falsy** Values
 
@@ -262,7 +262,7 @@ Loops allow you to execute a block of code **multiple times** based on a conditi
 - Used when the **number of iterations is known**.
 - Consists of 3 parts ⇒ I**nitialization, Condition, Updation**.
 
-<img src="./_loops_control_flow/working.png" alt="For Loop working" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">
+<img src="./working.png" alt="For Loop working" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">
 
 ### **While Loop**
 
