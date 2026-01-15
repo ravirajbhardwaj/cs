@@ -1,47 +1,15 @@
-const user = {
-  username: "ravi",
-  price: 999,
+// arrow function is a compact version of a traditional function
 
-  welcomeMessage: function () {
-    console.log(`${this.username} , Welcome to website`);
-    // console.log(this);
-  },
-};
+// traditional function
+function multiplyByTwo(x) {
+  return x * 2;
+}
 
-// user.welcomeMessage();
-// const user2 = user;
-// user2.welcomeMessage();
+// arrow function
+const multiplyByTwoArrow = x => x * 2
+multiplyByTwoArrow(5);
 
-// console.log(this);
-
-// function chai() {
-//   // let username = "ravi"
-//   console.log(this.username);
-//   console.log(this);
-// }
-
-// chai();
-
-user.sayHi = function hello() {
-  const arrow = () => {
-    // let user = "Ravi"
-    console.log(this.username);
-    console.log(this);
-  };
-  arrow();
-};
-
-user.sayHi();
-
-// const addTwo = (num1, num2) => {
-//   return num1 + num2
-// }
-
-// automatic return with () and do not write return
-const addTwo = (num1, num2) => num1 + num2;
-
-console.log(addTwo(2, 4));
-
-const obj = () => ({ user: "Ravi", age: 19 });
-const hi = obj();
-console.log(hi);
+// differences:
+// 1 Arrow functions ke paas apna this, arguments, ya super binding nahi hota.
+// 2 Arrow functions ko constructor ke roop mein use nahi kiya ja sakta.
+// 3 Arrow functions ke andar yield use nahi kar sakte.

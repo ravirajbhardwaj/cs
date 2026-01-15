@@ -1,7 +1,3 @@
-// jo bhi code likha hai uska package bna diya
-
-printChai();
-
 function printChai() { // function defination or signature
   console.log("Hello Chai");
 }
@@ -10,14 +6,16 @@ printChai(); // calling the function
 printChai(); // calling the function
 printChai(); // calling the function
 
+//               Parameters
 function bringBrush(itne) {
-  console.log(`Hanji, le aaye ${itne} brush`); // printing factory
+  console.log(`Hanji, le aaye ${itne} brush`);
 }
 
+//     Arguments
 bringBrush(4); // neta ji
 
-// fuction is also treat a value like string, number and etc
-// function expression
+// JavaScript me functions first-class objects hote hain 
+// named function expression
 const greet = function sayHello(name) {
   console.log(`Hello, ${name}!`);
 }
@@ -36,32 +34,13 @@ function calculateCartPrice(val1, vale2, ...num) {
 console.log(calculateCartPrice(200, 400, 300, 500, 600, 700));
 
 function handleObject(anyobject) {
-  console.log(`User name is ${anyobject.name}
-    and price is ${anyobject.age}`);
+  if (Array.isArray(anyobject)) {
+    console.log(anyobject[0]);
+    return;
+  }
+
+  console.log(`User name is ${anyobject.name} and price is ${anyobject.age}`);
 }
 
-handleObject({
-  name: "Ravi",
-  age: 20,
-});
-
-function handleArray(anyArray) {
-  return anyArray[0];
-}
-
-console.log(handleArray(["Ravi", 21]));
-
-let personOne = {
-  name: "Ravi",
-  greet: function () {
-    console.log(`Hello ${this.name}`);
-  },
-};
-
-let personTwo = {
-  name: "Sonu",
-};
-
-// const bindFunct = personOne.greet.bind(personOne);
-personOne.greet.call(personOne);
-// bindFunct();
+// ["Ravi", 21], { name: "Ravi", age: 20, }
+handleObject({ name: "Ravi", age: 20, });
