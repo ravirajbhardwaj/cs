@@ -26,58 +26,10 @@ let dotKey = "age";
 const WHITE = "fff";
 
 let user2 = {
-  [WHITE]: "Ravi", // WHITE -> fff
+  [WHITE]: "white", // fff -> "white"
 };
 
 console.log(user2.fff);
-
-// Object Methods Explanation
-function objectMethods(obj) {
-  console.log("Original Object:", obj);
-
-  let keys = Object.keys(obj);
-  console.log("After Object.keys():", keys);
-
-  let values = Object.values(obj);
-  console.log("After Object.values():", values);
-
-  let entries = Object.entries(obj);
-  console.log("After Object.entries():", entries);
-
-  let hasProp = obj.hasOwnProperty("property");
-  console.log("After hasOwnProperty():", hasProp);
-
-  let newObj = Object.assign({}, obj, { newProperty: "newValue" });
-  console.log("After Object.assign():", newObj);
-}
-
-// Example Usage for Object Methods
-const sampleObject = {
-  key1: "value1",
-  key2: "value2",
-  key3: "value3",
-};
-
-objectMethods(sampleObject);
-
-let bag = {
-  books: 5,
-  pens: 10,
-  waterBottle: 1,
-};
-
-console.log(Object.keys(bag));
-console.log(Object.values(bag));
-
-console.log(Object.entries(bag));
-
-console.log(bag.hasOwnProperty("books"));
-console.log(bag.hasOwnProperty("laptop"));
-
-const newBag = Object.assign({}, bag, { laptop: 10 });
-newBag.books = 10;
-console.log(newBag);
-console.log(bag);
 
 let sym = Symbol("uniqueKey");
 
@@ -85,6 +37,7 @@ let objWithKey = {
   name: "Ravi",
   [sym]: 1,
 };
+
 for (const key in objWithKey) {
   console.log(objWithKey[key]);
 }
@@ -96,17 +49,6 @@ for (const key in objWithKey) {
   }
 }
 
-// simple destructuring
-let [firstName, surname] = ["Ravi", "Raj"];
-console.log(firstName);
-console.log(surname);
-
-// Skipping Items with Commas
-
-let [fname, , lname] = "Ravi Raj Bhardwaj".split(" ");
-console.log(fname);
-console.log(lname);
-
 let names = [
   "Ravi",
   "Sonu",
@@ -114,8 +56,7 @@ let names = [
   "Mukul",
   "Ashi",
   "Modi",
-  "kejriwal",
-  "amitsah",
+  "Yogi",
 ];
 
 let [myName, myBrother1, myBrother2, myBrother3, myBesti, ...faltu] = names;
@@ -258,3 +199,83 @@ for (let i = 0; i < numbers.length; i++) {
 
   console.log(numbers[i]);
 }
+
+// new.target and new keyword
+
+function Person(name) {
+  // this = {}  -> job bhi is function ko call krega usme ya assign krna hai  (automatic)
+  if (!new.target) {
+    return new Person(name);
+  }
+  this.name = name;
+
+  // return this   -> automatic
+}
+
+// --- origin --
+function Object() {
+  // Base object constructor
+}
+Object.prototype = {}; // The base prototype object
+Object.__proto__ = Function.prototype; // Because Object itself is a function
+
+function Array() {
+  // Array constructor
+}
+Array.prototype = Object.create(Object.prototype); // Inherit from Object
+Array.__proto__ = Function.prototype; // Because Array is also a function
+
+function String() {
+  // String constructor
+}
+String.prototype = Object.create(Object.prototype);
+String.__proto__ = Function.prototype;
+
+function Number() {
+  // Number constructor
+}
+Number.prototype = Object.create(Object.prototype);
+Number.__proto__ = Function.prototype;
+
+// ------- Example Usage -------
+
+// Parent Constructor
+const Phone = function (brand, name) {
+  this.brand = brand;
+  this.name = name;
+};
+
+// Parent Method
+Phone.prototype.showDetails = function () {
+  console.log(`Brand: ${this.brand}, Model: ${this.name}`);
+};
+
+// Child Constructor
+const Smartphone = function (brand, name, os) {
+  // Inherit properties from Phone
+  Phone.call(this, brand, name); // 👈 Call parent constructor
+  this.os = os; // Add new property
+};
+
+Phone.prototype.getos = function () {
+  console.log(`OS: ${this.os}`);
+};
+
+// Set up inheritance (Link prototypes)
+Smartphone.prototype = Object.create(Phone.prototype); // 👈 Prototype chain
+Smartphone.prototype.constructor = Smartphone; // Fix constructor reference
+
+// Override showDetails method
+Smartphone.prototype.showDetails = function () {
+  console.log(`Brand: ${this.brand}, Model: ${this.name}, OS: ${this.os}`);
+};
+
+// Create instances
+let phone1 = new Phone("Samsung", "M21");
+let smartphone1 = new Smartphone("Apple", "iPhone 15", "iOS");
+
+// Test methods
+phone1.showDetails(); // Brand: Samsung, Model: M21
+smartphone1.showDetails(); // Brand: Apple, Model: iPhone 15, OS: iOS
+
+smartphone1.getos();

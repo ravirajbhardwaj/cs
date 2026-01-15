@@ -1,8 +1,5 @@
 const fruits = ["Mango", "Bannana", "Grapes", "Apple"];
 
-// Array:   push(), pop(), shift(), unshift(), splice(), slice(),
-// concat(), forEach(), map(), filter(), reduce(), find(), sort()
-
 console.log(fruits.length);
 
 // Core Iteration Methods

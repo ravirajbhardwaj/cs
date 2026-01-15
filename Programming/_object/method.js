@@ -1,6 +1,6 @@
-// Object.assign -> merge multiple values into one 
-//  && spread syntax -> const clone = {...user} // Yeh sirf top-level properties copy karta hai.
-// (Shallow Copy)
+// Object methods: keys, values, entries, fromEntries, hasOwn, assign, freeze, 
+// create, setPrototypeOf, getPrototypeOf
+
 let user = {
   name: "Ravi",
   age: 19,
@@ -9,13 +9,15 @@ let user = {
   }
 }
 
-
 let userProperties = {
   height: 6,
   weight: 50,
   isMale: true,
   name: "Sonu" // overwrite user.name
 }
+
+// Object.assign -> merge multiple values into one 
+//  && spread syntax -> const clone = {...user} // Yeh sirf top-level properties copy karta hai.
 
 // Object.assign(user, userProperties)
 
