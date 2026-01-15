@@ -262,7 +262,7 @@ Loops allow you to execute a block of code **multiple times** based on a conditi
 - Used when the **number of iterations is known**.
 - Consists of 3 parts ⇒ I**nitialization, Condition, Updation**.
 
-<img src="./working.png" alt="For Loop working" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">
+<img src="./assets/working.png" alt="For Loop working" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">
 
 ### **While Loop**
 
