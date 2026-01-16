@@ -48,3 +48,18 @@ for (const key in user) {
 }
 
 // Using break and continue
+
+let numbers = [2, 4, 6, 8, 9, 10]
+
+for (let number of numbers) {
+  if (number % 2 == !0) {
+    break; // Exit loop on first odd number
+  }
+}
+
+for (let number of numbers) {
+  if (number % 2 != 0) {
+    continue; // Skip odd numbers
+  }
+  console.log(`Even number: ${number}`)
+}
