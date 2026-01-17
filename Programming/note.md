@@ -336,10 +336,8 @@ Function that is passed as an argument to another function.
 
 > However, it is **not an array** because it doesn’t have array methods, and it is not an instance of the `Array` constructor.
 
-<aside style="padding: 10px; border: 2px solid #ccc; border-radius: 5px; border-radius: 10px">
+> [Function: length - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/length)
 
-[Function: length - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/length)
-</aside>
 
 ## **Memory Allocation in JavaScript**
 
@@ -412,7 +410,7 @@ JavaScript uses **Automatic Garbage Collection** to free up heap memory when obj
 
 JavaScript **does not immediately** free memory when an object is unused—GC runs **periodically**.
 
-```jsx
+```js
 function createUser() {
     let user = { name: "Armin" }; // Allocated in heap
     return user;
@@ -439,7 +437,7 @@ Variables declared outside of any function or block belong to the global scope a
   <details>
   <summary>Code Example</summary>
       
-  ```jsx
+  ```js
     if (true) {
       var user = "armin";
     }
@@ -461,7 +459,7 @@ Variables declared outside of any function or block belong to the global scope a
   <details>
   <summary>Code Example</summary>
     
-  ```jsx
+  ```js
     if (true) {
       let user = "armin";
     }
@@ -475,53 +473,52 @@ Variables declared outside of any function or block belong to the global scope a
   <details>
   <summary>Code Example</summary>
       
-    ```jsx
-      if (true) {
-        var user = "Ravi";
-      }
-      console.log(user); // can access because it is not block-scoped
-      
-      function someFn() {
-        var city = "sonipat";
-      }
-      
-      console.log(city); // ReferenceError, because var is function-scoped
-    ```
+  ```js
+    if (true) {
+      var user = "Ravi";
+    }
+    console.log(user); // can access because it is not block-scoped
+    
+    function someFn() {
+      var city = "sonipat";
+    }
+    
+    console.log(city); // ReferenceError, because var is function-scoped
+  ```
   </details>
 
 ### **Lexical Scope**
 
 - Means that the location where a variable or function is defined **determines its scope**.
 - When trying to access a variable, JavaScript will first look in the current scope. If it's not found, it will move outward to the next outer scope, continuing until it either finds the variable or reaches the global scope. This is called **Scope Chaining**.
-- 📝 **Code Example**
-    
-    ```jsx
-    const user = "armin";
-    const city = "jaipur";
-    
-    function outerFn() {
-      const city = "delhi";
-      function innerFn() {
-        const pincode = 311001;
-        console.log(pincode);
-        // first searches for "user" and "city" in local scope, then in parent scope,
-        // then in parent's parent scope until it reaches global scope
-        console.log(user);
-        console.log(city);
-      }
-      innerFn();
+
+```js
+  const user = "armin";
+  const city = "jaipur";
+  
+  function outerFn() {
+    const city = "delhi";
+    function innerFn() {
+      const pincode = 311001;
+      console.log(pincode);
+      // first searches for "user" and "city" in local scope, then in parent scope,
+      // then in parent's parent scope until it reaches global scope
+      console.log(user);
+      console.log(city);
     }
-    outerFn();
-    ```
+    innerFn();
+  }
+  outerFn();
+```
     
-### **Hoisting**
+## **Hoisting**
 
 - Hoisting is a JavaScript behavior where variable and function declarations are moved to the top of their current scope during the compilation phase.
 - Means we can use functions and variables before their declarations.
 
 >💡Hoisting helps to write cleaner code but also produces unexpected behavior in case of `var`
 
-### **TDZ** (**Temporal Dead Zone)**
+## **TDZ** (**Temporal Dead Zone)**
 
 Refers to the period between when a variable is **declared** using `let` or `const`, and when it is **initialized** with a value. During this phase, the variable exists but cannot be accessed, resulting in a `ReferenceError` if you try to use it before its initialization.
 
@@ -539,19 +536,16 @@ Refers to the period between when a variable is **declared** using `let` or `con
 
 ## **Shadowing**
 
-- Occurs when a inner variable **overrides (shadows)** the outer one within its scope.
-- 📝 **Code Example**
-    
-    ```jsx
-    let user = "armin"; // Global scope
-    
-    function something() {
-      let user = "annie"; // Shadows global 'user'
-      console.log(user); // "annie" (uses local 'user')
-    }
-    something();
-    ```
-    
+- Occurs when a inner variable **overrides (shadows)** the outer one within its scope. 
+```js
+  let user = "armin"; // Global scope
+  
+  function something() {
+    let user = "annie"; // Shadows global 'user'
+    console.log(user); // "annie" (uses local 'user')
+  }
+  something();
+```
 
 ## **Global Execution Context**
 
@@ -565,177 +559,159 @@ The GEC has two key phases:
 - Execution Phase
     - Whole code is executed line by line
     
-- 📝 **Example**
+> [JavaScript Visualizer](https://ui.dev/javascript-visualizer)
     
-    [JavaScript Visualizer](https://ui.dev/javascript-visualizer)
+```js
+  var num1 = 20
+  var num2 = 20
+  
+  function addNums(num1,num2){
+      var sum = num1 + num2
+      return sum
+  }
+  
+  var result = addNums(num1,num2)
+  
+  console.log(result);
+```
     
-    ```jsx
-    var num1 = 20
-    var num2 = 20
+1. Node js creates a global execution context when you run your code.
     
-    function addNums(num1,num2){
-        var sum = num1 + num2
-        return sum
-    }
+  ![Screenshot_79.png](attachment:93021de3-8eab-4320-8def-adc60f842325:Screenshot_79.png)
     
-    var result = addNums(num1,num2)
+
+1. Whole code is traversed, all variables are initialized with `undefined` and functions with their actual definitions in MEMORY PHASE
     
-    console.log(result);
-    ```
+  ![Screenshot_80.png](attachment:f8f9b921-9f8b-4ee5-b5ee-56ea565bf822:Screenshot_80.png)
     
-    1. Node js creates a global execution context when you run your code.
-        
-        ![Screenshot_79.png](attachment:93021de3-8eab-4320-8def-adc60f842325:Screenshot_79.png)
-        
+
+1. In EXECUTION PHASE, code is executed line by line and variables get initialized with their actual values.
     
-    1. Whole code is traversed, all variables are initialized with `undefined` and functions with their actual definitions in MEMORY PHASE
-        
-        ![Screenshot_80.png](attachment:f8f9b921-9f8b-4ee5-b5ee-56ea565bf822:Screenshot_80.png)
-        
+  ![Screenshot_81.png](attachment:693feab7-21dd-44c3-a5e1-fdc4ff2a9bf6:Screenshot_81.png)
     
-    1. In EXECUTION PHASE, code is executed line by line and variables get initialized with their actual values.
-        
-        ![Screenshot_81.png](attachment:693feab7-21dd-44c3-a5e1-fdc4ff2a9bf6:Screenshot_81.png)
-        
+
+1. When a function is invoked, a **Function Execution Context** is created. This has its own MEMORY and EXECUTION phase, similar to the global context.
+The function parameters are **immediately assigned values**.
     
-    1. When a function is invoked, a **Function Execution Context** is created. This has its own MEMORY and EXECUTION phase, similar to the global context.
-    The function parameters are **immediately assigned values**.
-        
-        ![Screenshot_82.png](attachment:a999f4da-7f16-4ae1-b511-f5c40b8d3479:Screenshot_82.png)
-        
+  ![Screenshot_82.png](attachment:a999f4da-7f16-4ae1-b511-f5c40b8d3479:Screenshot_82.png)
     
-    1. Executes the local code
-        
-        ![Screenshot_83.png](attachment:acedf3e0-e0a4-484f-bd68-1f4698f69071:Screenshot_83.png)
-        
+
+1. Executes the local code
     
-    1. Once the function finishes executing, its **Function Execution Context** is popped off the **Call Stack** and terminated.
+  ![Screenshot_83.png](attachment:acedf3e0-e0a4-484f-bd68-1f4698f69071:Screenshot_83.png)
     
-        
-        ![Screenshot_84.png](attachment:00de9896-1240-468b-92b6-8eb142ab389d:Screenshot_84.png)
-        
+
+1. Once the function finishes executing, its **Function Execution Context** is popped off the **Call Stack** and terminated.
+
+  ![Screenshot_84.png](attachment:00de9896-1240-468b-92b6-8eb142ab389d:Screenshot_84.png)
     
-    <aside>
-    💡
     
-    The **Call Stack** keeps track of the execution contexts. Each time a function is called, its context is pushed onto the stack, and when the function returns, its context is popped off.
-    
-    </aside>
-    
+>💡The **Call Stack** keeps track of the execution contexts. Each time a function is called, its context is pushed onto the stack, and when the function returns, its context is popped off.  
 
 ## **Closures**
 
 - A **closure** is a function that retains access to its lexical scope, even after the outer function has executed.
 - Closures are formed when an inner function references variables from its outer function.
 - Because closures keep **references to outer variables**, they can sometimes prevent memory from being released when those variables are no longer needed.
-- 📝 **Code Example**
+
     
-    Closures allow us to create **private variables** that cannot be accessed from outside.
+> Closures allow us to create **private variables** that cannot be accessed from outside.
     
-    ```jsx
-    function createCounter() {
-      let count = 0; // This variable is "private"
-    
-      return {
-        increment: function () {
-          count++; // Closure formed, `count` persists and stored in heap
-          return count;
-        },
-        decrement: function () {
-          count--;
-          return count;
-        },
-        getCount: function () {
-          return count;
-        },
-      };
-    }
-    
-    const counter = createCounter();
-    console.log(counter.increment()); // 1
-    console.log(counter.increment()); // 2
-    console.log(counter.decrement()); // 1
-    console.log(counter.getCount()); // 1
-    console.log(counter.count); // undefined (count is private)
-    ```
-    
+```js
+function createCounter() {
+  let count = 0; // This variable is "private"
+
+  return {
+    increment: function () {
+      count++; // Closure formed, `count` persists and stored in heap
+      return count;
+    },
+    decrement: function () {
+      count--;
+      return count;
+    },
+    getCount: function () {
+      return count;
+    },
+  };
+}
+
+const counter = createCounter();
+console.log(counter.increment()); // 1
+console.log(counter.increment()); // 2
+console.log(counter.decrement()); // 1
+console.log(counter.getCount()); // 1
+console.log(counter.count); // undefined (count is private)
+```
 
 ## **Partial Application**
 
 **Partial Application** is a technique where you create a new function by fixing some of the arguments of an existing function, leaving the rest to be filled later.
 
-- 📝 **Code Example**
+
     
-    ```jsx
-    function partialFn(fn, ...fixedArgs) {
-      return (...remainingArgs) => fn(...fixedArgs, ...remainingArgs);
-    }
-    
-    let multiplyBy5 = partialFn(multiply, 5);
-    console.log(multiplyBy5(4));
-    
-    // another way of achieving same
-    const multiplyBy2 = multiply.bind(null, 2);
-    console.log(multiplyBy2(7));
-    
-    function multiply(a, b) {
-      return a * b;
-    }
-    ```
-    
+```js
+  function partialFn(fn, ...fixedArgs) {
+    return (...remainingArgs) => fn(...fixedArgs, ...remainingArgs);
+  }
+  
+  let multiplyBy5 = partialFn(multiply, 5);
+  console.log(multiplyBy5(4));
+  
+  // another way of achieving same
+  const multiplyBy2 = multiply.bind(null, 2);
+  console.log(multiplyBy2(7));
+  
+  function multiply(a, b) {
+    return a * b;
+  }
+``` 
 
 ## **Currying**
 
 **Currying** is a technique in which a function with multiple arguments is transformed into a sequence of functions, each taking a single argument.
+ 
+```js
+  function curry(fn) {
+    return function curried(...args) {
+      if (args.length >= fn.length) {
+        return fn(...args);
+      } else {
+        return (...nextArgs) => curried(...args, ...nextArgs);
+      }
+    };
+  }
 
-- 📝 **Code Example**
-    
-    ```jsx
-    function curry(fn) {
-      return function curried(...args) {
-        if (args.length >= fn.length) {
-          return fn(...args);
-        } else {
-          return (...nextArgs) => curried(...args, ...nextArgs);
-        }
-      };
-    }
-    
-    const add = (a, b, c) => a + b + c;
-    
-    const curriedAdd = curry(add);
-    
-    console.log(curriedAdd(1)(2)(3)); // 6
-    console.log(curriedAdd(1, 2)(3)); // 6
-    console.log(curriedAdd(1, 2, 3)); // 6
-    ```
-    
+  const add = (a, b, c) => a + b + c;
+
+  const curriedAdd = curry(add);
+
+  console.log(curriedAdd(1)(2)(3)); // 6
+  console.log(curriedAdd(1, 2)(3)); // 6
+  console.log(curriedAdd(1, 2, 3)); // 6
+```   
 
 ## **Once Function**
 
- The **"once"** pattern ensures that a function can only be executed a single time. After being called once, the function is prevented from running again.
+The **"once"** pattern ensures that a function can only be executed a single time. After being called once, the function is prevented from running again.
 
-- 📝 **Code Example**
-    
-    ```jsx
-    function once(fn) {
-      let executed = false;
-      return (...args) => {
-        if (!executed) {
-          executed = true;
-          return fn(...args);
-        }
-      };
-    }
-    
-    const greet = (user) => console.log(`Hello there ${user}`);
-    const greetOnce = once(greet);
-    
-    greetOnce("Armin"); // Hello there Armin
-    greetOnce("Annie"); // (Nothing happens)
-    
-    ```
-    
+```js
+  function once(fn) {
+    let executed = false;
+    return (...args) => {
+      if (!executed) {
+        executed = true;
+        return fn(...args);
+      }
+    };
+  }
+  
+  const greet = (user) => console.log(`Hello there ${user}`);
+  const greetOnce = once(greet);
+  
+  greetOnce("Armin"); // Hello there Armin
+  greetOnce("Annie"); // (Nothing happens)
+```  
 
 ## **Memoization**
 
@@ -752,176 +728,162 @@ The GEC has two key phases:
 The `this` keyword refers to the current context and its value depends on **where and how** a function is called.
 
 1. **Global Context** 
-    - In **browsers**, `this` refers to the **global object** (`window`)
-    - 📝 **Code Example**
+  
+  - In **browsers**, `this` refers to the **global object** (`window`)
         
-        ```jsx
-        console.log(this === window); // true
-        ```
+    ```js
+    console.log(this === window); // true
+    ```
         
-    
-    - In **Node.js**, `this` in the global scope **does not** refer to `global`.
+  - In **Node.js**, `this` in the global scope **does not** refer to `global`.
         
-        **Each file in Node.js is treated as a separate module and is wrapped in a function during execution**. Because of this, `this` inside a module **initially** refers to `module.exports` (which is `{}` by default)
+    **Each file in Node.js is treated as a separate module and is wrapped in a function during execution**. Because of this, `this` inside a module **initially** refers to `module.exports` (which is `{}` by default)
         
-    - 📝 **Code Example**
-        
-        ```jsx
-        console.log(this); // {}
-        console.log(this === module.exports); // true
-        console.log(this === global); // false
-        
-        // --------------------------------------------------------------------
-        
-        function greet() {
-          console.log(this);
-        }
-        
-        function sayHello() {
-          console.log(this);
-        }
-        
-        module.exports = {
-          greet,
-          sayHello,
-        };
-        
-        // false, because we reassign module.exports to an
-        // entirely new object { greet, sayHello } and this is still pointing to {}
-        console.log(this === module.exports);
-        
-        // --------------------------------------------------------------------
-        
-        // module.exports.greet = function greet() {
-        //   console.log(this);
-        // };
-        
-        // module.exports.sayHello = function sayHello() {
-        //   console.log(this);
-        // };
-        
-        // // true, because this time we didn't reassigned
-        // // module.exports a completely new object
-        // console.log(this === module.exports);
-        ```
+    ```js
+      console.log(this); // {}
+      console.log(this === module.exports); // true
+      console.log(this === global); // false
+      
+      // --------------------------------------------------------------------
+      
+      function greet() {
+        console.log(this);
+      }
+      
+      function sayHello() {
+        console.log(this);
+      }
+      
+      module.exports = {
+        greet,
+        sayHello,
+      };
+      
+      // false, because we reassign module.exports to an
+      // entirely new object { greet, sayHello } and this is still pointing to {}
+      console.log(this === module.exports);
+      
+      // --------------------------------------------------------------------
+      
+      // module.exports.greet = function greet() {
+      //   console.log(this);
+      // };
+      
+      // module.exports.sayHello = function sayHello() {
+      //   console.log(this);
+      // };
+      
+      // // true, because this time we didn't reassigned
+      // // module.exports a completely new object
+      // console.log(this === module.exports);
+    ```
         
 
 1. **Object Method Context**
-    - Inside an object, `this` refers to the object itself.
-    - 📝 **Code Example**
-        
-        ```jsx
-        const obj = {
-          name: "Armin",
-          greet() {
-            console.log(`Welcome ${this.name}!`);
-          },
-        };
-        obj.greet();
-        ```
+  - Inside an object, `this` refers to the object itself.
+
+    ```js
+      const obj = {
+        name: "Armin",
+        greet() {
+          console.log(`Welcome ${this.name}!`);
+        },
+      };
+      obj.greet();
+    ```
         
 
 1. **Constructor Function Context**
-    - Inside a constructor function, `this` refers to the new instance being created.
-    - 📝 **Code Example**
-        
-        ```jsx
-        function Student(name) {
-          this.name = name;
-        }
-        const s1 = new Student("Armin");
-        console.log(s1.name);
-        ```
+  - Inside a constructor function, `this` refers to the new instance being created.
+
+    ```js
+      function Student(name) {
+        this.name = name;
+      }
+      const s1 = new Student("Armin");
+      console.log(s1.name);
+    ```
         
 
 1. **Arrow Function Context**
-    - Arrow functions do not have their own `this` binding. Instead, they inherit `this` from the surrounding lexical context.
-    - 📝 **Code Example**
-        
-        ```jsx
-        const obj = {
-          name: "Armin",
-          greet: () => {
-            console.log(`Welcome ${this.name}!`); // undefined
-          },
-        };
-        obj.greet();
-        ```
+  - Arrow functions do not have their own `this` binding. Instead, they inherit `this` from the surrounding lexical context.
+
+    ```js
+      const obj = {
+        name: "Armin",
+        greet: () => {
+          console.log(`Welcome ${this.name}!`); // undefined
+        },
+      };
+      obj.greet();
+    ```
         
 
 1. **Function Context**
-    - **Non-strict mode**
-        - `this` refers to the **global object** (`window` in browsers, `global` in Node.js).
-    - **Strict mode**
-        - `this` is `undefined`.
+  - **Non-strict mode**
+    - `this` refers to the **global object** (`window` in browsers, `global` in Node.js).
+  - **Strict mode**
+    - `this` is `undefined`.
 
-<aside>
-💡
-
-In non-strict mode, a special process called **this substitution** ensures that the value of `this` is always an object. It means:
+> In non-strict mode, a special process called **this substitution** ensures that the value of `this` is always an object. It means:
 
 - If a function is called with `this` set to `undefined` or `null`, `this` gets substituted with [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis).
 - If the function is called with `this` set to a primitive value, `this` gets substituted with the primitive value's wrapper object.
-- 📝 **Code Example**
+
     
-    ```jsx
-    function getThis() {
-      // in non-strict mode, it gives primitive wrapper object
-      // "use strict"; // in strict mode it gives literal value
-      console.log(this);
-    }
-    
-    function greet() {}
-    
-    getThis.call(Symbol(5));
-    ```
-    
-</aside>
+```js
+  function getThis() {
+    // in non-strict mode, it gives primitive wrapper object
+    // "use strict"; // in strict mode it gives literal value
+    console.log(this);
+  }
+  
+  function greet() {}
+  
+  getThis.call(Symbol(5));
+```
 
 ### **`call()`**
 
 - It **immediately** invokes the function with a given `this` value and arguments passed individually.
-- 📝 **Code Example**
     
-    ```jsx
-    function greet(age, city) {
-      console.log(`${this.name} is ${age} years old and lives in ${city}.`);
-    }
-    
-    const person = { name: "Armin" };
-    greet.call(person, 21, "jaipur");
-    ```
+```js
+  function greet(age, city) {
+    console.log(`${this.name} is ${age} years old and lives in ${city}.`);
+  }
+  
+  const person = { name: "Armin" };
+  greet.call(person, 21, "jaipur");
+```
     
 
 ### **`apply()`**
 
 - Same as `call()` but takes **arguments as an array**.
-- 📝 **Code Example**
     
-    ```jsx
-    function greet(age, city) {
-      console.log(`${this.name} is ${age} years old and lives in ${city}.`);
-    }
-    
-    const person = { name: "Armin" };
-    greet.apply(person, [21, "jaipur"]);
-    ```
+```js
+  function greet(age, city) {
+    console.log(`${this.name} is ${age} years old and lives in ${city}.`);
+  }
+  
+  const person = { name: "Armin" };
+  greet.apply(person, [21, "jaipur"]);
+```
     
 
 ### **`bind()`**
 
 - `bind()` returns a **new function** with the specified `this` context.
-- 📝 **Code Example**
-    
-    ```jsx
-    function greet(age, city) {
-      console.log(`${this.name} is ${age} years old and lives in ${city}.`);
-    }
-    
-    const person = { name: "Armin" };
-    const greetMe = greet.bind(person, 21, "jaipur");
-    greetMe();
-    ```
+  
+```js
+  function greet(age, city) {
+    console.log(`${this.name} is ${age} years old and lives in ${city}.`);
+  }
+  
+  const person = { name: "Armin" };
+  const greetMe = greet.bind(person, 21, "jaipur");
+  greetMe();
+```
 
 ## **Prototypes**
 
@@ -934,11 +896,9 @@ In non-strict mode, a special process called **this substitution** ensures tha
 | --- | --- |
 | **Prototype** | The object that another object inherits from. |
 | **`__proto__`** | A property on an **instance** that points to its prototype. |
-| **`prototype`** | A property on a **constructor function** that determines the prototype of its instances.
+| **`prototype`** | A property on a **constructor function** that determines the prototype of its instances.|
 
- |
-
-### `Object.prototype` and the Root of Inheritance
+### **`Object.prototype` and the Root of Inheritance**
 
 - Every object (except those created with `Object.create(null)`) **inherits from `Object.prototype.`**
 - That’s why, it is called that almost everything in **JavaScript** is an object.
@@ -948,27 +908,53 @@ In non-strict mode, a special process called **this substitution** ensures tha
 ### **`Object.create()`**
 
 - It allows creating an object **with a specific prototype**, providing more control over prototype inheritance.
-- 📝 **Code Example**
-    
-    ```jsx
-    const parent = {};
-    const child = Object.create(parent);
-    
-    console.log(child.__proto__ === parent); // true
-    ```
-    
 
----
+```js
+  const parent = {};
+  const child = Object.create(parent);
+  
+  console.log(child.__proto__ === parent); // true
+```
 
 ## **Function Constructors**
 
 - A **constructor function** is a special function used to create objects with shared properties and methods.
-- 📝 **Code Example**
     
-    ```jsx
+```js
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  Person.prototype.greet = function () {
+    return `Hello, My name is ${this.name}`;
+  };
+  
+  const user = new Person("Armin", 21);
+  console.log(user.greet());
+```
+    
+1. **What Does `new` Do?**
+  - Creates a new empty object
+  - Links the object's `__proto__` to the constructor function's `prototype`
+  - Binds `this` to the new object inside the function.
+  - Returns the new object, unless another object is explicitly returned.
+
+  ```js
+    console.log(user.__proto__ === Person.prototype); // true
+  ```
+        
+2. **Creating private variables**
+        
+  ```js
     function Person(name, age) {
+      let secret = "xyz";
       this.name = name;
       this.age = age;
+    
+      this.getSecretKey = function () {
+        console.log(secret);
+      };
     }
     
     Person.prototype.greet = function () {
@@ -977,184 +963,142 @@ In non-strict mode, a special process called **this substitution** ensures tha
     
     const user = new Person("Armin", 21);
     console.log(user.greet());
-    ```
-    
-1. **What Does `new` Do?**
-    - Creates a new empty object
-    - Links the object's `__proto__` to the constructor function's `prototype`
-    - Binds `this` to the new object inside the function.
-    - Returns the new object, unless another object is explicitly returned.
-    - 📝 **Code Example**
-        
-        ```jsx
-        console.log(user.__proto__ === Person.prototype); // true
-        ```
-        
-2. **Creating private variables**
-    - 📝 **Code  Example**
-        
-        ```jsx
-        function Person(name, age) {
-          let secret = "xyz";
-          this.name = name;
-          this.age = age;
-        
-          this.getSecretKey = function () {
-            console.log(secret);
-          };
-        }
-        
-        Person.prototype.greet = function () {
-          return `Hello, My name is ${this.name}`;
-        };
-        
-        const user = new Person("Armin", 21);
-        console.log(user.greet());
-        console.log(user.secret)  // undefined, can't access private variables
-        user.getSecretKey();
-        ```
+    console.log(user.secret)  // undefined, can't access private variables
+    user.getSecretKey();
+  ```
         
 3. **Can a constructor function return something other than `this` (the newly created object)?**
     - If you explicitly returns an object, `this` is ignored and the returned object is used instead.
     - If a **non-object** (like `null`, `undefined`, number, string, boolean) is returned, JavaScript **ignores it** and still returns `this`.
-    - 📝 **Code Example**
-        
-        ```jsx
-        function Person(name, age) {
-          this.name = name;
-          this.age = age;
-        
-          return {
-            city: "Jaipur",
-          };
-        }
-        
-        const user = new Person("Armin", 21);
-        console.log(user);
-        ```
-        
-4. **Arrow functions do not have their own `this`, so they cannot be used as constructor functions.**
-- 📝 **Code Example**
-    
-    ```jsx
-    const Person = (name, age) => {
-      this.name = name;
-      this.age = age;
-    };
-    
-    const user = new Person("Armin", 21); // TypeError: Person is not a constructor
-    ```
-    
-1. **Detecting Constructor Calls with `new.target`**
-    - A function can determine if it was called with `new` using `new.target`.
-    - `new.target` is only `undefined` when the function is invoked without `new` .
-    - 📝 **Code Example**
-        
-      ```jsx
+     
+    ```js
       function Person(name, age) {
-        if (!new.target) {
-          return `Called without new`;
-        }
         this.name = name;
         this.age = age;
+      
+        return {
+          city: "Jaipur",
+        };
       }
       
       const user = new Person("Armin", 21);
-      const user2 = Person();
       console.log(user);
-      console.log(user2); // Called without new
-      ```
----
+    ```
+        
+4. **Arrow functions do not have their own `this`, so they cannot be used as constructor functions.**
+
+```js
+  const Person = (name, age) => {
+    this.name = name;
+    this.age = age;
+  };
+  
+  const user = new Person("Armin", 21); // TypeError: Person is not a constructor
+```
+    
+1. **Detecting Constructor Calls with `new.target`**
+  - A function can determine if it was called with `new` using `new.target`.
+  - `new.target` is only `undefined` when the function is invoked without `new` .
+
+  ```js
+    function Person(name, age) {
+      if (!new.target) {
+        return `Called without new`;
+      }
+      this.name = name;
+      this.age = age;
+    }
+    
+    const user = new Person("Armin", 21);
+    const user2 = Person();
+    console.log(user);
+    console.log(user2); // Called without new
+  ```
 
 ## **Object-Oriented Programming (OOPS)**
 
 JavaScript introduced the `class` syntax in **ES6** as a cleaner way to work with **constructor functions and prototypes**. But under the hood `class` is just a syntactic sugar over JavaScript’s prototype-based inheritance.
 
-## **Class and Objects**
+### **Class and Objects**
 
 - A `class` is simply a **blueprint** for creating objects.
 - An object is simply an instance of an class.
-- 📝 **Code Example**
-    
-    ```jsx
-    class Person {
-      constructor(name, age) {
-        this.name = name;
-        this.age = age;
-      }
-    
-      greet() {
-        console.log(`Hello, my name is ${this.name}`);
-      }
+
+```js
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
     }
-    
-    // Creating an instance
-    const user = new Person("Armin");
-    user.greet();
-    ```
-    
+  
+    greet() {
+      console.log(`Hello, my name is ${this.name}`);
+    }
+  }
+  
+  // Creating an instance
+  const user = new Person("Armin");
+  user.greet();
+```
 
 ### **`constructor`**
 
 - A special function that runs automatically when a new instance of a class is created.
 - It initializes the object with default or user-provided values.
 
-## **Inheritance**
+### **Inheritance**
 
 - Inheritance allows one class to inherit properties and methods from another.
 - JavaScript supports inheritance via the `extends` keyword.
-- 📝 **Code Example**
-    
-    ```jsx
-    // Parent class (Base class)
-    class Vehicle {
-      constructor(brand, model, year) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-      }
-    
-      displayInfo() {
-        console.log(`${this.year} ${this.brand} ${this.model}`);
-      }
+
+```js
+  // Parent class (Base class)
+  class Vehicle {
+    constructor(brand, model, year) {
+      this.brand = brand;
+      this.model = model;
+      this.year = year;
     }
-    
-    // Child class (Car)
-    class Car extends Vehicle {
-      constructor(brand, model, year, seats) {
-        super(brand, model, year); // Call parent constructor
-        this.seats = seats;
-      }
-    
-      carDetails() {
-        console.log(`Car: ${this.year} ${this.brand} ${this.model} with ${this.seats} seats.`);
-      }
+  
+    displayInfo() {
+      console.log(`${this.year} ${this.brand} ${this.model}`);
     }
-    
-    // Child class (Bike)
-    class Bike extends Vehicle {
-      constructor(brand, model, year, type) {
-        super(brand, model, year);
-        this.type = type; // e.g., "Electric", "Manual"
-      }
-    
-      bikeDetails() {
-        console.log(`Bike: ${this.year} ${this.brand} ${this.model} - ${this.type} type.`);
-      }
+  }
+  
+  // Child class (Car)
+  class Car extends Vehicle {
+    constructor(brand, model, year, seats) {
+      super(brand, model, year); // Call parent constructor
+      this.seats = seats;
     }
-    
-    // Creating instances
-    const car1 = new Car("Toyota", "Corolla", 2023, 4);
-    const bike1 = new Bike("Yamaha", "MT-15", 2022, "Manual");
-    
-    car1.carDetails(); // Output: Car: 2023 Toyota Corolla with 4 seats.
-    bike1.bikeDetails(); // Output: Bike: 2022 Yamaha MT-15 - Manual type.
-    
-    car1.displayInfo(); // Output: 2023 Toyota Corolla
-    bike1.displayInfo(); // Output: 2022 Yamaha MT-15
-    
-    ```
-    
+  
+    carDetails() {
+      console.log(`Car: ${this.year} ${this.brand} ${this.model} with ${this.seats} seats.`);
+    }
+  }
+  
+  // Child class (Bike)
+  class Bike extends Vehicle {
+    constructor(brand, model, year, type) {
+      super(brand, model, year);
+      this.type = type; // e.g., "Electric", "Manual"
+    }
+  
+    bikeDetails() {
+      console.log(`Bike: ${this.year} ${this.brand} ${this.model} - ${this.type} type.`);
+    }
+  }
+  
+  // Creating instances
+  const car1 = new Car("Toyota", "Corolla", 2023, 4);
+  const bike1 = new Bike("Yamaha", "MT-15", 2022, "Manual");
+  
+  car1.carDetails(); // Output: Car: 2023 Toyota Corolla with 4 seats.
+  bike1.bikeDetails(); // Output: Bike: 2022 Yamaha MT-15 - Manual type.
+  
+  car1.displayInfo(); // Output: 2023 Toyota Corolla
+  bike1.displayInfo(); // Output: 2022 Yamaha MT-15
+```
 
 ### **`super`**
 
@@ -1162,100 +1106,93 @@ It is used in **class inheritance** to refer to the parent class. It allows chil
 
 1. **Call the parent class constructor** (`super(...)`) to inherit properties.
 2. **Access parent class methods** (`super.methodName(...)`) inside the child class.
-- 📝 **Code Example**
-    
-    ```jsx
-    class Parent {
-      greet() {
-        console.log("Hello from Parent");
-      }
-    }
-    
-    class Child extends Parent {
-      greet() {
-        super.greet(); // Calls Parent's greet()
-        console.log("Hello from Child"); // Overriding the greet() method
-      }
-    }
-    
-    const obj = new Child();
-    obj.greet();
-    ```
-    
 
-## **Encapsulation**
+```js
+  class Parent {
+    greet() {
+      console.log("Hello from Parent");
+    }
+  }
+  
+  class Child extends Parent {
+    greet() {
+      super.greet(); // Calls Parent's greet()
+      console.log("Hello from Child"); // Overriding the greet() method
+    }
+  }
+  
+  const obj = new Child();
+  obj.greet();
+```
+
+### **Encapsulation**
 
 - Encapsulation is the principle of bundling data and methods within an object.
 - Hiding **data** by restricting direct access.
 - Using **private fields (#), closures, or getters/setters.**
 - Getters (`get`) and setters (`set`) allow controlled access to private fields while keeping the syntax **cleaner and more intuitive**.
-- 📝 **Code Example**
+
     
-    ```jsx
-    class BankAccount {
-      #balance = 0; // Private field (Encapsulated data)
-    
-      constructor(accountHolder) {
-        this.accountHolder = accountHolder;
-      }
-    
-      deposit(amount) {
-        this.#balance += amount;
-        console.log(`Deposited ${amount}. New balance: ${this.#balance}`);
-      }
-    
-      // Providing controlled access
-      get balance() {
-        return this.#balance;
-      }
-    
-      set balance(amount) {
-        if (amount < 0) {
-          console.log("Balance cannot be negative!");
-        } else {
-          this.#balance = amount;
-        }
+```js
+  class BankAccount {
+    #balance = 0; // Private field (Encapsulated data)
+  
+    constructor(accountHolder) {
+      this.accountHolder = accountHolder;
+    }
+  
+    deposit(amount) {
+      this.#balance += amount;
+      console.log(`Deposited ${amount}. New balance: ${this.#balance}`);
+    }
+  
+    // Providing controlled access
+    get balance() {
+      return this.#balance;
+    }
+  
+    set balance(amount) {
+      if (amount < 0) {
+        console.log("Balance cannot be negative!");
+      } else {
+        this.#balance = amount;
       }
     }
-    
-    const myAccount = new BankAccount("Armin");
-    myAccount.deposit(100);
-    myAccount.balance = -2000;
-    ```
+  }
+  
+  const myAccount = new BankAccount("Armin");
+  myAccount.deposit(100);
+  myAccount.balance = -2000;
+```
     
 
-## **Abstraction**
+### **Abstraction**
 
 - Abstraction involves hiding **implementation details** while showing only necessary parts.
-- 📝 **Code Example**
     
-    ```jsx
-    class ATM {
-      #balance = 1000; // Private field (Encapsulated)
-    
-      withdraw(amount) {
-        // Abstracts away how balance is checked & updated
-        if (this.#hasSufficientFunds(amount)) {
-          this.#balance -= amount;
-          console.log(`Withdrawn ${amount}. Remaining balance: ${this.#balance}`);
-        } else {
-          console.log("Insufficient funds.");
-        }
-      }
-    
-      #hasSufficientFunds(amount) {
-        // Private method (Hidden logic)
-        return amount <= this.#balance;
+```js
+  class ATM {
+    #balance = 1000; // Private field (Encapsulated)
+  
+    withdraw(amount) {
+      // Abstracts away how balance is checked & updated
+      if (this.#hasSufficientFunds(amount)) {
+        this.#balance -= amount;
+        console.log(`Withdrawn ${amount}. Remaining balance: ${this.#balance}`);
+      } else {
+        console.log("Insufficient funds.");
       }
     }
-    
-    const atm = new ATM();
-    atm.withdraw(500);
-    ```
-    
-
-<aside>
-💡
+  
+    #hasSufficientFunds(amount) {
+      // Private method (Hidden logic)
+      return amount <= this.#balance;
+    }
+  }
+  
+  const atm = new ATM();
+  atm.withdraw(500);
+```
 
 **Encapsulation** as **hiding data**, and **Abstraction** as **hiding complexity**.
 
@@ -1263,117 +1200,103 @@ It is used in **class inheritance** to refer to the parent class. It allows chil
 | --- | --- | --- |
 | **Car's Engine** | You **cannot directly modify** the engine internals | You just press the **start button** without worrying about the engine process |
 | **ATM Machine** | You cannot see **how balance is stored internally** | You just use **`withdraw()`**, without worrying about validation logic |
-</aside>
 
----
-
-## **Polymorphism**
+### **Polymorphism**
 
 - Polymorphism allows child classes to modify or extend the behavior of parent methods.
 
 ### **Method Overriding**
 
-- 📝 **Code Example**
-    
-    ```jsx
-    class Parent {
-        greet() {
-            console.log("Hello from Parent");
-        }
-    }
-    
-    class Child extends Parent {
-        greet() {
-            console.log("Hello from Child"); // Overriding parent method
-        }
-    }
-    
-    const obj = new Child();
-    obj.greet(); // Hello from Child
-    ```  
+```js
+  class Parent {
+      greet() {
+          console.log("Hello from Parent");
+      }
+  }
+  
+  class Child extends Parent {
+      greet() {
+          console.log("Hello from Child"); // Overriding parent method
+      }
+  }
+  
+  const obj = new Child();
+  obj.greet(); // Hello from Child
+```  
 
 ### **Method Overloading**
 
 - JavaScript does not support method overloading natively, but it can be simulated.
-- 📝 **Code Example**
-    
-    ```jsx
-    class Calculator {
-      add(a, b, c) {
-        if (c !== undefined) return a + b + c;
-        return a + b;
-      }
+  
+```js
+  class Calculator {
+    add(a, b, c) {
+      if (c !== undefined) return a + b + c;
+      return a + b;
     }
-    
-    const calc = new Calculator();
-    console.log(calc.add(2, 3)); // 5
-    console.log(calc.add(2, 3, 4)); // 9
-    
-    ```
-    
+  }
+  
+  const calc = new Calculator();
+  console.log(calc.add(2, 3)); // 5
+  console.log(calc.add(2, 3, 4)); // 9
+```
 
-## **`static`**
+### **`static`**
 
 - Used to define methods and properties that **belong to the class itself**, rather than its instances.
-- 📝 **Code Example**
     
-    ```jsx
-    class MathUtils {
-      static square(num) {
-        return num * num;
-      }
-      static PI = 3.14;
+```js
+  class MathUtils {
+    static square(num) {
+      return num * num;
     }
-    
-    console.log(MathUtils.square(4)); // 16
-    console.log(MathUtils.PI); // 16
-    
-    const math = new MathUtils();
-    // console.log(math.square(4)); // TypeError: math.square is not a function
-    ```
-    
+    static PI = 3.14;
+  }
+  
+  console.log(MathUtils.square(4)); // 16
+  console.log(MathUtils.PI); // 16
+  
+  const math = new MathUtils();
+  // console.log(math.square(4)); // TypeError: math.square is not a function
+``` 
 
-## **`instanceof`**
+### **`instanceof`**
 
 - Checks whether an object is an instance of a particular class.
 - More specifically, it verifies if the **prototype chain** of an object includes the constructor’s prototype.
     
-    ```jsx
-    object instanceof Constructor;
-    ```
+```js
+  object instanceof Constructor;
+```
     
 - Works only for **objects**, not **primitive values**.
-- 📝 **Code Example**
-    
-    ```jsx
-    class Person {}
-    const user = new Person();
-    
-    console.log(user instanceof Person); 
-    console.log(user instanceof Object); 
-    
-    ```
 
----
+```js
+  class Person {}
+  const user = new Person();
+  
+  console.log(user instanceof Person); 
+  console.log(user instanceof Object); 
+```
 
-## **Autoboxing** *(Temporary Wrapping)*
+### **Autoboxing** *(Temporary Wrapping)*
 
 JavaScript **temporarily wraps** primitives in objects when accessing properties.
 
 When you access `.length` or call a method on a primitive string, JavaScript **automatically wraps** it in a `String` object **just for that operation**:
 
-```jsx
-console.log("abc".length); // 3 
-console.log("hello".toUpperCase()); // "HELLO" 
+```js
+  console.log("abc".length); // 3 
+  console.log("hello".toUpperCase()); // "HELLO" 
 ```
 
 🤔 **What happens internally?**
 
 - So when you do `console.log("abc".length)` , behind the scenes, JavaScript does this:
     
-    ```jsx
-    	console.log(new String("abc").length);
-    ```
+```js
+  console.log(new String("abc").length);
+```
     
 - The primitive `"abc"` is **temporarily converted** into a `String` object.
 - The property (`length`) is accessed.
@@ -1381,50 +1304,46 @@ console.log("hello".toUpperCase()); // "HELLO"
 
 📌 **Temporary Objects are Not Persistent**
 
-- 📝 **Code Example**
+```js
+  const user = "armin";
+  console.log(user);
+  
+  user.something = "hello"; // Trying to add a property
+  console.log(user.something); // undefined (because the temporary object disappears)
+  
+  //
+  const newUser = new String("annie");
+  console.log(newUser);
+  
+  newUser.city = "jaipur";
+  console.log(newUser.city); // accessible
+```
     
-    ```jsx
-    const user = "armin";
-    console.log(user);
-    
-    user.something = "hello"; // Trying to add a property
-    console.log(user.something); // undefined (because the temporary object disappears)
-    
-    //
-    const newUser = new String("annie");
-    console.log(newUser);
-    
-    newUser.city = "jaipur";
-    console.log(newUser.city); // accessible
-    ```
-    
-
 ### **Nullish Coalescing Operator (`??`)**
 
 Useful for setting default values only when the left-hand value is `null` or `undefined`.
 
-```jsx
-//assigns "Guest" only if userName is null or undefined
-const name = userName ?? "Guest"; 
+```js
+  //assigns "Guest" only if userName is null or undefined
+  const name = userName ?? "Guest"; 
 ```
 
 ### **Optional Chaining (`?.`)**
 
 Enables safe navigation through nested properties without checking each level manually.
-
 This will return `undefined` instead of throwing an error if `user` or `address` is missing.
 
-```jsx
-const city = user?.address?.city;
+```js
+ const city = user?.address?.city;
 ```
 
 ## **JS facts**
 
 1. **Before printing anything with `console.log()`**, JavaScript first processes the value based on its type.
-    - **Primitives** (number, string, boolean, `null`, `undefined`) are converted using `String(value)`.
-    - **Arrays** use `Array.prototype.toString()` but still appear structured.
-    - **Objects** are **not** converted using `.toString()`. Instead, the console **inspects their properties** and formats them for readability.
-    - **In Node.js**, this formatting is similar to `util.inspect()`.
+  - **Primitives** (number, string, boolean, `null`, `undefined`) are converted using `String(value)`.
+  - **Arrays** use `Array.prototype.toString()` but still appear structured.
+  - **Objects** are **not** converted using `.toString()`. Instead, the console **inspects their properties** and formats them for readability.
+  - **In Node.js**, this formatting is similar to `util.inspect()`.
 
 **Before printing anything with `console.log()`**, JavaScript first converts it into string.
 
@@ -1433,9 +1352,8 @@ const city = user?.address?.city;
 Whenever `this` is used, it refers to the context (`संदर्भ` ) in which a piece of code is executed.
 
 > ***kab aur kaha function call hoga uspe this depend karega uska context kya hoga***
-> 
 
-```jsx
+```js
 const person = {
   name: "Ram",
   greet() {
@@ -1448,14 +1366,14 @@ person.greet(); // output will be Ram
 
 ## **How this behaves in global space (global scope) ?**
 
-```jsx
-// what is global space ?
-console.log(this) 
-// here the console log this is in global space 
-function test(){
-console.log(this)
-}
-// and the console this inside function is in the funtional space
+```js
+  // what is global space ?
+  console.log(this) 
+  // here the console log this is in global space 
+  function test(){
+  console.log(this)
+  }
+  // and the console this inside function is in the funtional space
 ```
 
 The value of `this` in the global scope is the global object, which depends on the runtime environment in which it is executed.
@@ -1466,14 +1384,14 @@ The value of `this` in the global scope refers to the global object, which is `w
 
 - **See here** 👇
     
-    ![image.png](attachment:b26cfe07-2ea5-4a35-a0a0-e4fbd409cf1d:image.png)
+  ![image.png](attachment:b26cfe07-2ea5-4a35-a0a0-e4fbd409cf1d:image.png)
     
 
 ### **But why ?**
 
 JavaScript is used to add dynamicity to web pages, and with JavaScript, we can manipulate the DOM. The main global object that provides methods in the browser is `window`, so by default, everything in the global scope points to `window`. That’s why the execution context inside the browser is the `window` object
 
-```jsx
+```js
 // guess the output
 console.log(this === window)
 <button onclick="console.log(this.tagName)">Click me</button>
@@ -1494,65 +1412,60 @@ When you create a file in Node.js (jaise `index.js`), Node.js **automatically wr
 
 **You don't see this function in your code**, but it looks something like this:
 
-```jsx
+```js
 (function (exports, require, module, __filename, __dirname) {
     // Your module code is actually running inside this function!
 });
 ```
 
-- 📝 **Code Example**
+```js
+  console.log(this); 
+  console.log(this === module.exports); 
+  // Now guess the output
+```
     
-    ```jsx
-    console.log(this); 
-    console.log(this === module.exports); 
-    // Now guess the output
-    ```
-    
-- 📝**Code Example**
-    
-    ```jsx
-    console.log(this); // {}
-    console.log(this === module.exports); // true
-    console.log(this === global); // false
-    
-    // --------------------------------------------------------------------
-    
-    function greet() {
-      console.log(this);
-    }
-    
-    function sayHello() {
-      console.log(this);
-    }
-    
-    module.exports = {
-      greet,
-      sayHello,
-    };
-    
-    // false, because we reassign module.exports to an
-    // entirely new object { greet, sayHello } and this is still pointing to {}
-    console.log(this === module.exports);
-    
-    // --------------------------------------------------------------------
-    
-    // module.exports.greet = function greet() {
-    //   console.log(this);
-    // };
-    
-    // module.exports.sayHello = function sayHello() {
-    //   console.log(this);
-    // };
-    
-    // // true, because this time we didn't reassigned
-    // // module.exports a completely new object
-    // console.log(this === module.exports);
-    ```
-    
+```js
+  console.log(this); // {}
+  console.log(this === module.exports); // true
+  console.log(this === global); // false
+  
+  // --------------------------------------------------------------------
+  
+  function greet() {
+    console.log(this);
+  }
+  
+  function sayHello() {
+    console.log(this);
+  }
+  
+  module.exports = {
+    greet,
+    sayHello,
+  };
+  
+  // false, because we reassign module.exports to an
+  // entirely new object { greet, sayHello } and this is still pointing to {}
+  console.log(this === module.exports);
+  
+  // --------------------------------------------------------------------
+  
+  // module.exports.greet = function greet() {
+  //   console.log(this);
+  // };
+  
+  // module.exports.sayHello = function sayHello() {
+  //   console.log(this);
+  // };
+  
+  // // true, because this time we didn't reassigned
+  // // module.exports a completely new object
+  // console.log(this === module.exports);
+```
 
-### **For (import / export)**
+## **For (import / export)**
 
-### **No Function Wrapping in ES Modules**
+## **No Function Wrapping in ES Modules**
 
 - Node.js **does not** wrap ES Modules in a function.
 - Instead, **ES Modules are executed in strict mode by default** (`'use strict'` is **always enabled**).
@@ -1562,13 +1475,13 @@ When you create a file in Node.js (jaise `index.js`), Node.js **automatically wr
 
 If a function has a `this` reference inside it, that `this` reference usually points to an object. But which object it points to depends on how the function was called.
 
-## Standalone Functions (In strict mode and Non strict mode)
+## **Standalone Functions (In strict mode and Non strict mode)**
 
 `this` keyword behave differently in strict and non-strict mode.
 
 When regular function is invoked as standalone function the this inside the function will point to global object window for browser and global object global for nodejs in non strict mode 
 
-```jsx
+```js
 // Non strict mode
 // try in your browser
 function insideBrowser(){
@@ -1582,10 +1495,10 @@ In None strict mode the this inside function is window object
 
 - **See in Browser**
     
-    ![image.png](attachment:f71d0e9e-d8cc-423b-99f0-e2ef0ea6082a:image.png)
+  ![image.png](attachment:f71d0e9e-d8cc-423b-99f0-e2ef0ea6082a:image.png)
     
 
-```jsx
+```js
 // Non Strict Mode 
 // try this in node js env
 function insideNode(){
@@ -1597,20 +1510,20 @@ insideNode();
 
 - **See in Node environment**
     
-    ![image.png](attachment:d4af6062-eae3-4a8b-a9c5-5709bcafe643:image.png)
+  ![image.png](attachment:d4af6062-eae3-4a8b-a9c5-5709bcafe643:image.png)
     
 
 In **Node.js (non-strict mode)**, the global object is `global`, not `window`. However, it **does not include browser APIs** like `document` or `window`. Instead, it contains Node.js-specific APIs.
 
-### What is global ?
+### **What is global ?**
 
 The `global` object in Node.js serves as the **global namespace** that contains built-in functions, variables, and modules accessible from anywhere in the application.
 
-## Now Understanding what magic is happening in strict mode?
+## **Now Understanding what magic is happening in strict mode?**
 
 When **`"use strict"`** is applied in both the browser and the Node.js runtime environment, you will see that the value of **`this`** is **`undefined`** inside a function.
 
-```jsx
+```js
 "use strict"
 function insideBrowser(){
     console.log(this)
@@ -1635,7 +1548,7 @@ Example to understand better :
 
 **In Non Strict mode**
 
-```jsx
+```js
 function checkThis() {
     console.log(this)
 }
@@ -1647,7 +1560,7 @@ checkThis.call("Saurav")                       // String {'Saurav'
 
 **In Strict mode**
 
-```jsx
+```js
 "use strict"
 function checkThis() {
     console.log(this)
@@ -1660,48 +1573,48 @@ checkThis.call("Saurav")                       // 'Saurav'
 
 In short whenever this is called inside function in non strict mode this substitution method takes place and when there is strict mode there no this substitution takes place.
 
-## Normal Function inside Object
+## **Normal Function inside Object**
 
 Inside an object, `this` refers to the object itself for regular function
 
-```jsx
-const postOnInstagram = {
-  name: "Saurav Jha",
-  post() {
-    console.log(` ${this.name} has posted new reel`); // this.name => postOnInstagram.name
-  },
-};
-postOnInstagram.post();
-// output: Saurav jha has posted new reel
+```js
+  const postOnInstagram = {
+    name: "Saurav Jha",
+    post() {
+      console.log(` ${this.name} has posted new reel`); // this.name => postOnInstagram.name
+    },
+  };
+  postOnInstagram.post();
+  // output: Saurav jha has posted new reel
 ```
 
 Function inside object will have the context of that object so the value of this inside the function will postOnInstagram obj.
 
 - 📝**Guess the output**
     
-    ```jsx
-    const postOnInstagram = {
-      name: "Saurav Jha",
-      post() {
-        console.log(` ${this.name} has posted new reel`); // this.name => postOnInstagram.name
-      },
-    };
+```js
+  const postOnInstagram = {
+    name: "Sonu",
+    post() {
+      console.log(` ${this.name} has posted new reel`); // this.name => postOnInstagram.name
+    },
+  };
+  
+  const randomUser = {
+  name:"Sanket"
+  };
+  
+  Object.setPrototypeOf(randomUser,postOnInstagram);
+  console.log(randomUser.post())
     
-    const randomUser = {
-    name:"Ram"
-    };
-    
-    Object.setPrototypeOf(randomUser,postOnInstagram);
-    console.log(randomUser.post())
-    
-    ```
+```
     
 
-## this in Arrow Function
+### **this in Arrow Function**
 
 **Arrow functions do not have their own `this`**. Instead, they inherit `this` from their **outer lexical scope** (the surrounding context where they are defined).
 
-```jsx
+```js
 const obj = {
   name: "Saurav",
   greet: () => {
@@ -1712,57 +1625,56 @@ const obj = {
 
 But how can I modify this code so that it should work properly
 
-- 📝**See the Solution**
-    
-    ```jsx
-    const obj = {
-      name: "Saurav",
-      greet: function () {
-        const runThis = () => {
-          console.log(`Welcome ${this.name}`); 
-        };
-        runThis();
-      },
-    };
-    console.log(obj.greet()); // welcome
-    ```
-    
+<details>
+<summary>See the Solution</summary>
+
+```js
+  const obj = {
+    name: "Saurav",
+    greet: function () {
+      const runThis = () => {
+        console.log(`Welcome ${this.name}`); 
+      };
+      runThis();
+    },
+  };
+  console.log(obj.greet()); // welcome
+```
+</details>
 
 ### **this in Constructor Function**
 
 The value of this inside constructor function will based on new instance created
 
-```jsx
-function Student(name) {
-  this.name = name;
-}
-const s1 = new Student("Aman");
-console.log(s1.name);
-// output: Aman
+```js
+  function Student(name) {
+    this.name = name;
+  }
+  const s1 = new Student("Ravi");
+  console.log(s1.name);
+  // output: Ravi
 ```
 
 - 📝 **Guess the output**
     
-    ```jsx
-    
-    function User(name) {
-      this.name = name;
-      this.sayHello = function () {
-        console.log("Hello, " + this.name);
-      };
-    
-      setTimeout(function () {
-        console.log("Inside setTimeout: " + this.name);
-      }, 1000);
-    }
-    
-    const u1 = new User("Saurav");
-    u1.sayHello();
-    // after guessing the output you will see unexpected so try to solve it
-    ```
-    
+```js
+  function User(name) {
+    this.name = name;
+    this.sayHello = function () {
+      console.log("Hello, " + this.name);
+    };
+  
+    setTimeout(function () {
+      console.log("Inside setTimeout: " + this.name);
+    }, 1000);
+  }
+  
+  const u1 = new User("Ravi");
+  u1.sayHello();
+  // after guessing the output you will see unexpected so try to solve it
+```  
 
-## Use Cases of this
+## **Use Cases of this [call, apply, bind]**
 
 **`call()`**
 
@@ -1770,17 +1682,15 @@ Call method immediately invokes the function with with a given `this` value an
 
 > **Please Note:**
  arguments are passed to `call()` individually as a list
-> 
-- **📝 Code Example**
     
-    ```jsx
-    function jobProfile(age, role,exp) {
-      console.log(`${this.name} is ${age} and his role is ${role} with ${exp} of experience`);
-    }
-    
-    const person = { name: "Saurav" };
-    jobProfile.call(person, 23, "Full stack developer",2);
-    ```
+```js
+  function jobProfile(age, role,exp) {
+    console.log(`${this.name} is ${age} and his role is ${role} with ${exp} of experience`);
+  }
+  
+  const person = { name: "Saurav" };
+  jobProfile.call(person, 23, "Full stack developer",2);
+```
     
 
 **`apply()`**
@@ -1790,17 +1700,15 @@ apply method immediately invokes the function with a given `this` value and ar
 > **Please Note:**
  arguments are passed to `apply()` as array
 > 
-- **📝 Code Example**
     
-    ```jsx
-    function jobProfile(age, role,exp) {
-      console.log(`${this.name} is ${age} and his role is ${role} with ${exp} of experience`);
-    }
-    
-    const person = { name: "Saurav" };
-    jobProfile.apply(person, [23, "Full stack developer",2]);
-    ```
-    
+```js
+  function jobProfile(age, role,exp) {
+    console.log(`${this.name} is ${age} and his role is ${role} with ${exp} of experience`);
+  }
+  
+  const person = { name: "Saurav" };
+  jobProfile.apply(person, [23, "Full stack developer",2]);
+```   
 
 **`bind()`**
 
@@ -1808,21 +1716,18 @@ bind method returns a new function when called, calls this function with its `t
 
 > **Please Note:**
  arguments are passed to `bind()` individually as a list
-> 
-- **📝 Code Example**
     
-    ```jsx
-    function jobProfile(age, role,exp) {
-      console.log(`${this.name} is ${age} and his role is ${role} with ${exp} of experience`);
-    }
-    
-    const person = { name: "Saurav" };
-    const getProfileDetails = jobProfile.bind(person, 23, "Full stack developer",2);
-    getProfileDetails();
-    ```
-    
+```js
+  function jobProfile(age, role,exp) {
+    console.log(`${this.name} is ${age} and his role is ${role} with ${exp} of experience`);
+  }
 
----
+  const person = { name: "Saurav" };
+  const getProfileDetails = jobProfile.bind(person, 23, "Full stack developer",2);
+  getProfileDetails();
+```
+
+## **Miscellaneous**
 
 Promise: An object that represents the eventual completion (or) failure of an async operation
 
