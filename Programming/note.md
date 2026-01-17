@@ -208,7 +208,7 @@ Returns a string indicating the **type** of a value.
     
 >💡 `typeof null` returning "object" is a bug. It can’t be fixed, because that would break the existing legacy codebase. 
 
-[Code examples covered so far](./js_topic/variable-datatype.js)
+[Code examples covered so far](./_basic/variable-datatype.js)
 
 ## **Conditional Statements**
 
@@ -399,6 +399,8 @@ Function that is passed as an argument to another function.
   ```
   </details>
 
+<img src="./assets/memory.png" alt="For Loop working" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">
+
 ## **Garbage Collection (GC) in JavaScript**
 
 JavaScript uses **Automatic Garbage Collection** to free up heap memory when objects are no longer needed.
@@ -420,6 +422,8 @@ ref = null; // Now, the object is unreachable and can be garbage collected
 ```
 
 When `ref = null`, the object `{ name: "Armin" }` is **no longer reachable**, so the garbage collector will clean it up in the next GC cycle.
+
+> <a href='https://www.youtube.com/watch?v=4qLf0FJMyf0'>Mark and Sweep Garbage Collection Algorithm</a>
 
 ## **Scope**
 
@@ -492,24 +496,28 @@ Variables declared outside of any function or block belong to the global scope a
 - Means that the location where a variable or function is defined **determines its scope**.
 - When trying to access a variable, JavaScript will first look in the current scope. If it's not found, it will move outward to the next outer scope, continuing until it either finds the variable or reaches the global scope. This is called **Scope Chaining**.
 
-```js
-  const user = "armin";
-  const city = "jaipur";
-  
-  function outerFn() {
-    const city = "delhi";
-    function innerFn() {
-      const pincode = 311001;
-      console.log(pincode);
-      // first searches for "user" and "city" in local scope, then in parent scope,
-      // then in parent's parent scope until it reaches global scope
-      console.log(user);
-      console.log(city);
-    }
-    innerFn();
-  }
-  outerFn();
-```
+  <details>
+    <summary>Code Example</summary>
+
+    ```js
+      const user = "armin";
+      const city = "jaipur";
+      
+      function outerFn() {
+        const city = "delhi";
+        function innerFn() {
+          const pincode = 311001;
+          console.log(pincode);
+          // first searches for "user" and "city" in local scope, then in parent scope,
+          // then in parent's parent scope until it reaches global scope
+          console.log(user);
+          console.log(city);
+        }
+        innerFn();
+      }
+      outerFn();
+    ```
+  </details>
     
 ## **Hoisting**
 
@@ -554,10 +562,10 @@ When JavaScript runs your code, it **creates a Global Execution Context, t**hink
 The GEC has two key phases:
 
 - Memory Phase
-    - The JS engine scans through the code and allocates memory for all variables and functions.
-    - Variables are initialized with `undefined`, while function declarations are stored in memory with their complete definitions.
+  - The JS engine scans through the code and allocates memory for all variables and functions.
+  - Variables are initialized with `undefined`, while function declarations are stored in memory with their complete definitions.
 - Execution Phase
-    - Whole code is executed line by line
+  - Whole code is executed line by line
     
 > [JavaScript Visualizer](https://ui.dev/javascript-visualizer)
     
