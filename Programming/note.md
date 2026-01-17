@@ -583,36 +583,13 @@ The GEC has two key phases:
   console.log(result);
 ```
     
-1. Node js creates a global execution context when you run your code.
-    
-  ![Screenshot_79.png](attachment:93021de3-8eab-4320-8def-adc60f842325:Screenshot_79.png)
-    
-
-1. Whole code is traversed, all variables are initialized with `undefined` and functions with their actual definitions in MEMORY PHASE
-    
-  ![Screenshot_80.png](attachment:f8f9b921-9f8b-4ee5-b5ee-56ea565bf822:Screenshot_80.png)
-    
-
-1. In EXECUTION PHASE, code is executed line by line and variables get initialized with their actual values.
-    
-  ![Screenshot_81.png](attachment:693feab7-21dd-44c3-a5e1-fdc4ff2a9bf6:Screenshot_81.png)
-    
-
-1. When a function is invoked, a **Function Execution Context** is created. This has its own MEMORY and EXECUTION phase, similar to the global context.
+- Node js creates a global execution context when you run your code.
+- Whole code is traversed, all variables are initialized with `undefined` and functions with their actual definitions in MEMORY PHASE
+- In EXECUTION PHASE, code is executed line by line and variables get initialized with their actual values.
+- When a function is invoked, a **Function Execution Context** is created. This has its own MEMORY and EXECUTION phase, similar to the global context.
 The function parameters are **immediately assigned values**.
-    
-  ![Screenshot_82.png](attachment:a999f4da-7f16-4ae1-b511-f5c40b8d3479:Screenshot_82.png)
-    
-
-1. Executes the local code
-    
-  ![Screenshot_83.png](attachment:acedf3e0-e0a4-484f-bd68-1f4698f69071:Screenshot_83.png)
-    
-
-1. Once the function finishes executing, its **Function Execution Context** is popped off the **Call Stack** and terminated.
-
-  ![Screenshot_84.png](attachment:00de9896-1240-468b-92b6-8eb142ab389d:Screenshot_84.png)
-    
+- Executes the local code
+- Once the function finishes executing, its **Function Execution Context** is popped off the **Call Stack** and terminated.
     
 >💡The **Call Stack** keeps track of the execution contexts. Each time a function is called, its context is pushed onto the stack, and when the function returns, its context is popped off.  
 
@@ -656,8 +633,6 @@ console.log(counter.count); // undefined (count is private)
 
 **Partial Application** is a technique where you create a new function by fixing some of the arguments of an existing function, leaving the rest to be filled later.
 
-
-    
 ```js
   function partialFn(fn, ...fixedArgs) {
     return (...remainingArgs) => fn(...fixedArgs, ...remainingArgs);
@@ -910,8 +885,6 @@ The `this` keyword refers to the current context and its value depends on **wher
 
 - Every object (except those created with `Object.create(null)`) **inherits from `Object.prototype.`**
 - That’s why, it is called that almost everything in **JavaScript** is an object.
-
-![Screenshot_95.png](attachment:7c0f1e12-850e-4fcd-84b6-23df435da1e9:Screenshot_95.png)
 
 ### **`Object.create()`**
 
