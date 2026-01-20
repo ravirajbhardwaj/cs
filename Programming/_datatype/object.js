@@ -452,3 +452,36 @@ console.log(personOne)
 
 // structuredClone(personOne) // Error: Converting circular structure to JSON
 // To handle circular references, a custom cloning function is needed.
+
+let user = {
+  name: "Ravi",
+  age: 21,
+  gender: "male",
+}
+
+console.log(Object.getOwnPropertyDescriptor(user, 'name')) // {value: 'Ravi', writable: true, enumerable: true, configurable: true}
+
+user.name = "Sonu"
+
+// make non-writable
+
+Object.defineProperty(user, 'name', { writable: false })
+
+user.name = "Ravi" // TypeError: Attempted to assign to readonly property.
+
+// make non-enumerable
+user.userToString = function () {
+  return "userToString"
+}
+
+for (const key in user) {
+  console.log(key) // userToString also print
+}
+
+Object.defineProperty(user, 'toString', { enumerable: false })
+
+for (const key in user) {
+  console.log(key) // not print userToString
+}
+
+// configurable: false prevents changes of property flags and its deletion, while allowing to change its value.
