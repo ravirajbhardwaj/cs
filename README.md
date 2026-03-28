@@ -18,15 +18,16 @@ To build a strong foundation, focus on understanding concepts, not just memorizi
 ---
 
 ## 📑 Table of Contents
-* [Programming Fundamentals & Logic](#programming-fundametals-(logic))
-* [Data Structures & Algorithms](#data-structures--algorithms)
-* [Operating Systems](#operating-systems)
-* [Computer Networks](#computer-networks)
-* [Databases](#databases)
+
+[Programming](#programming) &nbsp; | &nbsp;
+[DSA](#data-structures--algorithms) &nbsp; | &nbsp;
+[Operating Systems](#operating-systems) &nbsp; | &nbsp;
+[Computer Networks](#computer-networks) &nbsp; | &nbsp;
+[Databases](#databases)
 
 ---
-
-# Programming Fundamentals (Logic)
+(Fundamentals Logic)
+# Programming 
 
 > To learn any programming language well, you need to understand two things:
 > 1. **Data Types** — what kind of data you are working with
@@ -36,35 +37,35 @@ To build a strong foundation, focus on understanding concepts, not just memorizi
 
 ## Table of Contents
 
-- [Introduction to JavaScript](#introduction-to-javascript)
-- [Variable Declarations](#variable-declarations)
-- [Data Types](#data-types)
-- [Primitives vs Reference Types](#primitives-vs-reference-types)
-- [Type Conversion](#type-conversion)
-- [String Interpolation & typeof](#string-interpolation--typeof)
-- [Conditional Statements](#conditional-statements)
-- [Truthy and Falsy Values](#truthy-and-falsy-values)
-- [Loops](#loops)
-- [Functions](#functions)
-- [Memory Allocation](#memory-allocation)
-- [Garbage Collection](#garbage-collection)
-- [Scope](#scope)
-- [Hoisting](#hoisting)
-- [Temporal Dead Zone (TDZ)](#temporal-dead-zone-tdz)
-- [Shadowing](#shadowing)
-- [Global Execution Context](#global-execution-context)
-- [Closures](#closures)
-- [Partial Application](#partial-application)
-- [Currying](#currying)
-- [Once Function](#once-function)
-- [Memoization](#memoization)
-- [Function Composition](#function-composition)
-- [this Keyword](#this-keyword)
-- [Prototypes](#prototypes)
-- [Constructor Functions](#constructor-functions)
-- [Object-Oriented Programming (OOP)](#object-oriented-programming-oop)
-- [Miscellaneous](#miscellaneous)
-- [Resources](#resources)
+[Introduction to JavaScript](#introduction-to-javascript) &nbsp; | &nbsp;
+[Variable Declarations](#variable-declarations) &nbsp; | &nbsp;
+[Data Types](#data-types) &nbsp; | &nbsp;
+[Primitives vs Reference Types](#primitives-vs-reference-types) &nbsp; | &nbsp;
+[Type Conversion](#type-conversion) &nbsp; | &nbsp;
+[String Interpolation & typeof](#string-interpolation--typeof) &nbsp; | &nbsp;
+[Conditional Statements](#conditional-statements) &nbsp; | &nbsp;
+[Truthy and Falsy Values](#truthy-and-falsy-values) &nbsp; | &nbsp;
+[Loops](#loops) &nbsp; | &nbsp;
+[Functions](#functions) &nbsp; | &nbsp;
+[Memory Allocation](#memory-allocation) &nbsp; | &nbsp;
+[Garbage Collection](#garbage-collection) &nbsp; | &nbsp;
+[Scope](#scope) &nbsp; | &nbsp;
+[Hoisting](#hoisting) &nbsp; | &nbsp;
+[Temporal Dead Zone (TDZ)](#temporal-dead-zone-tdz) &nbsp; | &nbsp;
+[Shadowing](#shadowing) &nbsp; | &nbsp;
+[Global Execution Context](#global-execution-context) &nbsp; | &nbsp;
+[Closures](#closures) &nbsp; | &nbsp;
+[Partial Application](#partial-application) &nbsp; | &nbsp;
+[Currying](#currying) &nbsp; | &nbsp;
+[Once Function](#once-function) &nbsp; | &nbsp;
+[Memoization](#memoization) &nbsp; | &nbsp;
+[Function Composition](#function-composition)
+[this Keyword](#this-keyword) &nbsp; | &nbsp;
+[Prototypes](#prototypes)&nbsp; | &nbsp;
+[Constructor Functions](#constructor-functions) &nbsp; | &nbsp;
+[Object-Oriented Programming (OOP)](#object-oriented-programming-oop) &nbsp; | &nbsp;
+[Miscellaneous](#miscellaneous) &nbsp; | &nbsp;
+[Resources](#resources) &nbsp; | &nbsp;
 
 ---
 
