@@ -76,7 +76,7 @@ Each version will get better.
 - **Noobs** focus on beautiful design.
 - **Professionals** focus on making it **simple and useful for users-friendly**.
 
-![Alt text for screen readers](./assets/ui-ux.png "Optional title on mouseover")
+![Alt text for screen readers](../diagrams/img/ui-ux.png "Optional title on mouseover")
 
 </details>
 
@@ -338,8 +338,6 @@ Loops allow you to execute a block of code **multiple times** based on a conditi
 
 - Used when the **number of iterations is known**.
 - Consists of 3 parts ⇒ I**nitialization, Condition, Updation**.
-
-<img src="./assets/working.png" alt="For Loop working" style="max-width: 100%; height: auto; display: block; margin: 1em 0;">
 
 ### **While Loop**
 
